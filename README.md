@@ -1,46 +1,146 @@
-# Astro Starter Kit: Basics
+# 🐾 Petrův pes
 
-```sh
-npm create astro@latest -- --template basics
+Webová aplikace pro správu klientů, členství a rezervací.
+
+Projekt vzniká jako moderní systém pro správu péče o psy, komunikaci s klienty a interní administraci.
+
+---
+
+## ✨ Funkce
+
+### Veřejná část
+
+* landing page
+* informace o službách
+* registrace / přihlášení
+
+### Klientská zóna
+
+* přehled profilu
+* rezervace termínů
+* členská sekce
+* klientské informace na jednom místě
+
+### Administrace
+
+* správa klientů
+* správa rezervací
+* detail klienta
+* interní dashboard
+
+---
+
+## 🧠 Přístup
+
+Projekt staví na:
+
+* jednoduchosti používání
+* přehledné administraci
+* rychlosti
+* moderním UX bez zbytečné složitosti
+
+Cílem není přehlcený systém, ale nástroj, který šetří čas a usnadňuje každodenní provoz.
+
+---
+
+## 🛠️ Tech Stack
+
+* Astro
+* React Islands
+* TypeScript
+* Tailwind CSS
+* Supabase
+
+  * Authentication
+  * Database
+  * Role-based access
+
+---
+
+## 📂 Struktura projektu
+
+```txt
+src/
+├── components/
+│   ├── admin/
+│   ├── auth/
+│   ├── dashboard/
+│   └── layout/
+├── layouts/
+├── lib/
+├── pages/
+└── styles/
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## ⚙️ Lokální spuštění
 
-Inside of your Astro project, you'll see the following folders and files:
+Nainstalujte dependencies:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm install
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Spusťte development server:
 
-## 🧞 Commands
+```bash
+npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+Aplikace poběží na:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```txt
+http://localhost:4321
+```
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🔐 Environment Variables
+
+Vytvořte `.env` soubor:
+
+```env
+PUBLIC_SUPABASE_URL=your_url
+PUBLIC_SUPABASE_ANON_KEY=your_key
+```
+
+---
+
+## 📦 Build
+
+Production build:
+
+```bash
+npm run build
+```
+
+Preview buildu:
+
+```bash
+npm run preview
+```
+
+---
+
+## 🚧 Stav projektu
+
+Aktivní vývoj.
+
+Plánované oblasti:
+
+* role management
+* lepší správa rezervací
+* členské funkce
+* rozšíření administrace
+* notifikace
+
+---
+
+## 👨‍💻 Development
+
+Vyvíjí:
+
+Michal Mikulenka
+
+Pokud narazíte na issue nebo máte návrh na zlepšení, vytvořte issue nebo pull request.
