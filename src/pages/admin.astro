@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AdminMembersTable from "../components/admin/AdminMembersTable";
+import AppointmentsTable from "../components/admin/AppointmentsTable";
+import AddApointmentForm from "../components/admin/AddAppointmentForm";
+---
+
+<BaseLayout title="Admin dashboard">
+  <main class="mx-auto max-w-7xl px-6 py-12">
+    <h1 class="mb-8 text-4xl font-semibold">
+      Admin dashboard
+    </h1>
+
+    <AdminMembersTable client:load />
+    <AppointmentsTable client:load />
+    <AddApointmentForm client:load />
+  </main>
+</BaseLayout>

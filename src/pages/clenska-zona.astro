@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AuthForm from "../components/auth/AuthForm";
+---
+
+<BaseLayout title="Členská zóna">
+  <main class="mx-auto max-w-7xl px-6 py-20">
+    <h1 class="mb-8 text-4xl font-semibold">
+      Členská zóna
+    </h1>
+
+    <AuthForm client:load />
+  </main>
+</BaseLayout>

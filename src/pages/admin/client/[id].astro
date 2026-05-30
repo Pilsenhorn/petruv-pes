@@ -1,0 +1,14 @@
+---
+export const prerender = false;
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ClientCard from "../../../components/admin/ClientCard";
+
+const id = Astro.params.id ?? "";
+---
+
+<BaseLayout title="Karta klienta">
+  <main class="mx-auto max-w-5xl px-6 py-20">
+    <ClientCard client:load clientId={id} />
+  </main>
+</BaseLayout>
