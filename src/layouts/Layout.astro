@@ -1,0 +1,208 @@
+---
+import "../styles/global.css";
+
+const siteUrl = "https://mikulenka.dev"; // Změnit na její doménu, až bude hotová
+const pageTitle = "CHS Petrův Pes";
+const pageDescription = "Rodinná chovatelská stanice bruselských a belgických grifonků, odborné trimování a individuální výběr štěňat do těch nejlepších domovů.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#organization`,
+      "name": "CHS Petrův Pes",
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon.svg`,
+      "image": `${siteUrl}/og-image.webp`,
+      "description": pageDescription,
+      "priceRange": "$$",
+      "taxID": "11691514", // IČO Paní Petrové změnit na její IČO
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CZ"
+      },
+      "founder": {
+        "@id": `${siteUrl}/#person`
+      },
+      "sameAs": [
+        "https://www.instagram.com/mikulenka.dev/" // její Instagram, pokud bude mít vlastní, změnit na její, přidat facebook
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      "name": "Lenka Petrová",
+      "url": siteUrl,
+      "jobTitle": "Chovatelka grifonků, CHS Petrův Pes",
+      "image": `${siteUrl}/og-image.webp`,
+      "sameAs": [
+        "https://www.instagram.com/mikulenka.dev/" // její Instagram, pokud bude mít vlastní, změnit na její, přidat facebook
+      ],
+      "worksFor": {
+        "@id": `${siteUrl}/#organization`
+      }
+    },
+    {
+      "@type": "Service",
+      "serviceType": "CHS Petrův Pes",
+      "url": siteUrl,
+      "provider": {
+        "@id": `${siteUrl}/#organization`
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Czech Republic"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Pardubice"
+        }
+      ],
+      "description": pageDescription
+    }
+  ],
+};
+
+---
+
+<!doctype html>
+<html lang="cs">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/" /> <!-- Změnit na její favicon, až bude hotová -->
+		<link rel="canonical" href={siteUrl} />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<meta name="author" content="Lenka Petrová | CHS Petrův Pes" />
+		<meta name="description" content={pageDescription} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:image" content={`${siteUrl}/og-image.webp`} /> <!-- Změnit na její obrázek, až bude hotový -->
+		<meta property="og:image:alt" content="CHS Petrův Pes" />
+		<meta property="og:locale" content="cs_CZ" />
+		<meta property="og:site_name" content="CHS Petrův Pes" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		<meta name="twitter:image" content={`${siteUrl}/og-image.webp`} />
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="CHS Petrův Pes" />
+		<meta name="theme-color" content="#cee0f4" />
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Google Analytics and Microsoft Clarity tracking scripts
+
+    <script type="text/javascript">
+			(function(c,l,a,r,i,t,y){
+				c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+				t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+				y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+			})(window, document, "clarity", "script", "wndauopzl0");
+		</script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-91X2GX1NJB"></script>
+		<script is:inline>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {{
+			dataLayer.push(arguments);
+		}}
+		gtag('js', new Date());
+
+		gtag('config', 'G-91X2GX1NJB');
+		</script>
+   	-->
+
+	</head>
+	<body class="bg-background text-text-primary font-sans">
+		<slot />
+		<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const btn = document.getElementById("menu-btn") as HTMLButtonElement | null;
+			const menu = document.getElementById("mobile-menu") as HTMLElement | null;
+
+			if (!btn || !menu) return;
+
+			let lastFocusedElement: HTMLElement | null = null;
+
+			const focusableSelectors =
+			'a, button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+			const getFocusable = () =>
+			menu.querySelectorAll<HTMLElement>(focusableSelectors);
+
+			const openMenu = () => {
+			lastFocusedElement = document.activeElement as HTMLElement;
+
+			menu.classList.remove("hidden");
+			menu.classList.add("flex");
+			menu.setAttribute("aria-hidden", "false");
+			btn.setAttribute("aria-expanded", "true");
+
+			const focusable = getFocusable();
+			if (focusable.length) focusable[0].focus();
+			};
+
+			const closeMenu = () => {
+			menu.classList.add("hidden");
+			menu.classList.remove("flex");
+			menu.setAttribute("aria-hidden", "true");
+			btn.setAttribute("aria-expanded", "false");
+
+			lastFocusedElement?.focus();
+			};
+
+			btn.addEventListener("click", () => {
+			const isOpen = btn.getAttribute("aria-expanded") === "true";
+			isOpen ? closeMenu() : openMenu();
+			});
+
+			// close on link click
+			getFocusable().forEach((el) => {
+			el.addEventListener("click", closeMenu);
+			});
+
+			// click outside
+			document.addEventListener("click", (e) => {
+			const target = e.target as Node;
+
+			const isInside = menu.contains(target);
+			const isBtn = btn.contains(target);
+
+			if (!isInside && !isBtn && btn.getAttribute("aria-expanded") === "true") {
+				closeMenu();
+			}
+			});
+
+			// ESC + focus trap
+			document.addEventListener("keydown", (e) => {
+			const isOpen = btn.getAttribute("aria-expanded") === "true";
+			if (!isOpen) return;
+
+			if (e.key === "Escape") {
+				closeMenu();
+			}
+
+			if (e.key === "Tab") {
+				const focusable = getFocusable();
+				if (!focusable.length) return;
+
+				const first = focusable[0];
+				const last = focusable[focusable.length - 1];
+
+				if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+				} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+				}
+			}
+			});
+		});
+		</script>
+	</body>
+</html>

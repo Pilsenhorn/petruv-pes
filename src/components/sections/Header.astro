@@ -1,0 +1,87 @@
+---
+interface Props {
+  variant?: "home" | "galery";
+}
+
+const { variant = "home" } = Astro.props;
+
+const navItems =
+  variant === "home"
+    ? [
+        { href: "#about", label: "O nás" },
+        { href: "#puppies", label: "Štěňata" },
+        { href: "#services", label: "Služby" },
+        { href: "#galery", label: "Galerie" },
+        { href: "#contact", label: "Kontakt" },
+      ]
+    : [
+        { href: "/#about", label: "O nás" },
+        { href: "/#puppies", label: "Štěňata" },
+        { href: "/#services", label: "Služby" },
+        { href: "/#galery", label: "Galerie" },
+        { href: "/#contact", label: "Kontakt" },
+      ];
+
+---
+
+<header class="sticky top-0 left-0 z-50 w-full px-3 pt-3 sm:px-4">
+  <div class="w-full rounded-3xl border backdrop-blur-md">
+    <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-3 py-3 sm:px-5 lg:px-8">
+
+      {/* Logo */}
+      <a href="/" class="flex shrink-0 items-center">
+        <img
+          src="/"
+          alt="Logo CHS Petrův Pes"
+          width="40"
+          height="40"
+          decoding="async"
+          fetchpriority="high"
+          class="h-9 w-9 sm:h-10 sm:w-10"
+        />
+      </a>
+
+      {/* Desktop nav */}
+      <nav class="hidden items-center gap-5 text-sm font-medium lg:flex xl:gap-8 xl:text-body">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="transition hover:text-(--accent)"
+          >
+            {item.label}
+          </a>
+        ))}
+
+      </nav>
+
+      {/* Mobile menu button */}
+      <button
+        id="menu-btn"
+        class="flex shrink-0 flex-col gap-1 rounded-full p-2 lg:hidden"
+        aria-label="Otevřít navigaci"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="h-0.5 w-6 bg-(--text-primary)"></span>
+        <span class="h-0.5 w-6 bg-(--text-primary)"></span>
+        <span class="h-0.5 w-6 bg-(--text-primary)"></span>
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile menu */}
+  <div
+    id="mobile-menu"
+    class="fixed left-3 right-3 top-20 hidden flex-col gap-2 overflow-y-auto rounded-3xl border border-(--text-primary)/15 bg-(--background)/95 p-3 shadow-xl backdrop-blur-md sm:left-4 sm:right-4 lg:hidden"
+  >
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class="rounded-full px-4 py-3 text-center text-body transition hover:bg-(--accent)/10"
+      >
+        {item.label}
+      </a>
+    ))}
+
+  </div>
+</header>

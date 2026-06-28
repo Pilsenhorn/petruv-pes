@@ -1,9 +1,68 @@
 @import "tailwindcss";
 
+:root {
+  --background: rgba(215, 212, 202, 1);
+  --text-primary: rgba(84, 59, 146, 1);
+  --text-secondary: rgba(70, 119, 91, 1);
+  --accent: rgba(171, 97, 144, 1);
+  
+  /*
+  vymyslet jinou barvu.
+  --accent-hover: rgba(73, 91, 125, 1); 
+
+  */
+
+
+  --tracking-heading: -0.025em;
+  --tracking-text: 0.005em;
+  --tracking-cta: 0.015em;
+  --text-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.2);
+  --text-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --text-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: system-ui, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+.text-body {
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+.text-body-lg {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+.text-muted {
+    color: var(--text-secondary);
+}
+.tracking-heading {
+    letter-spacing: var(--tracking-heading);
+}
+.tracking-text {
+    letter-spacing: var(--tracking-text);
+}
+.tracking-cta {
+    letter-spacing: var(--tracking-cta);
+}
+.tracking-serif {
+    letter-spacing: 0.075rem;
+}
+.tracking-serif-heading {
+    letter-spacing: 0.1rem;
+}
+.text-shadow-sm {
+    text-shadow: var(--text-shadow-sm);
+}
+.text-shadow-md {
+    text-shadow: var(--text-shadow-md);
+}
+.text-shadow-lg {
+    text-shadow: var(--text-shadow-lg);
 }
